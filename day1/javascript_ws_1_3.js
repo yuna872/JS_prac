@@ -401,8 +401,18 @@ const movieInfo = {
 }
 
 
-movieInfo.results.forEach(movie => {
+// movieInfo.results.forEach(movie => {
+//   if (movie['vote_average'] >= 8) {
+//     console.log(movie.title)
+//   }
+// });
+
+const newarr = []
+
+movieInfo.results.forEach((movie) => {
   if (movie['vote_average'] >= 8) {
-    console.log(movie.title)
+      newarr.push(movie.title)
   }
-});
+})
+
+console.log(newarr)
