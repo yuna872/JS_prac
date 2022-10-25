@@ -26,10 +26,17 @@
 
       function filterMessage(event) {
         // badWords에 포함된 단어가 입력될 경우, '**'으로 변환하여 output에 출력 
-        filteredInput = event.target.value
-        if (event.target.value in badWords) {
-          filteredInput = '**'
-        } 
+        let filteredInput = event.target.value
+        // badWords 에 있는 원소 하나씩 가져 와서 검사
+        badWords.forEach((badword)=>{
+          // 입력된 문자열에 badword가 포함되어 있는 동안
+          while (filteredInput.includes(badword)) {
+            // badword는 **로 변경해서 보여주기
+            // replace(변경할 문자열, 대체할 문자열)
+            filteredInput = filteredInput.replace(badword, "**")
+          }
+        })
+        // output div의 innerText로 넣어주기
         output.innerText = filteredInput
       }
 
