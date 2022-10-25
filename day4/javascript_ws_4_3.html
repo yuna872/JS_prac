@@ -54,25 +54,15 @@
     const content = event.target.content.value
 
     // 카드 만들기
-    const articleTag = document.createElement('article')
-    articleTag.setAttribute('class', 'col-4')
-    const div = document.createElement('div')
-    div.setAttribute('class', 'card m-1')
-    articleTag.appendChild(div)
-    const cardBody = document.createElement('div')
-    cardBody.setAttribute('class', 'card-body')
-    div.appendChild(cardBody)
-    const cardTitle = document.createElement('h5')
-    cardTitle.setAttribute('class','card-title')
-    const pTag = document.createElement('p')
-    pTag.setAttribute('class','card-text')
-    cardTitle.innerText = title
-    cardBody.appendChild(cardTitle)
-    pTag.innerText = content
-    cardBody.appendChild(pTag)
-
-    // 카드를 섹션에 넣기
-    cardsSection.appendChild(articleTag)
+    cardsSection.innerHTML = `
+    <article class="col-4">
+        <div class="card m-1">
+          <div class="card-body">
+            <h5 class="card-title">${title}</h5>
+            <p class="card-text">${content}</p>
+          </div>  
+        </div>
+      </article>`
    })
 
   </script>
