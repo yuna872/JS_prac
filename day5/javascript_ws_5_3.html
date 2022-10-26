@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>인기 영화들</h1>
+  <ul></ul>
+  
+  <!-- axios CDN을 삽입한다. -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    const MOVIE_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=5af9a2dad723d90711412a6322716aa7&language=en-US&page=1'
+    const ulTag = document.querySelector('ul')
+
+    function getMovie(){
+      axios.get(MOVIE_URL)
+
+        .then((response)=>{
+          // console.log(response.data.results)
+          movies = response.data.results
+          console.log(movies)
+          const overSeven = movies.forEach((movie) => {
+            if (movie['vote_average'] >= 7) {
+              const liTag = document.createElement('li')
+              liTag.innerText = movie.title
+              ulTag.appendChild(liTag)
+            }
+          })
+          return overSeven
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
+    }
+
+    getMovie()
+
+  </script>
+</body>
+</html>
