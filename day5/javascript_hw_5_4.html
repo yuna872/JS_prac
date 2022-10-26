@@ -8,13 +8,20 @@
 </head>
 <body>
   <script>
-    console.log('Hi')
-    
-    setTimeout(function () {
-      console.log('SSAFY')
-    }, 3000)
+      
+      console.log('Hi')
+      
+      let myFirstPromise = new Promise((resolve, reject)=>{
+        setTimeout(function () {
+          console.log('SSAFY')
+          resolve('Bye')
+        }, 3000)
+      })
 
-    console.log('Bye')
+      myFirstPromise.then(function (text) {
+        console.log(text)
+      })
+
   </script>
 </body>
 </html>
